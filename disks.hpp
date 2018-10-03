@@ -96,18 +96,21 @@ public:
   bool is_alternating() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.
-    return false;
+    disk_color current=DISK_DARK;
+    for(size_t i = 0; i < _colors.size(); i++) {
+      if(_colors[i]==current)
+        return false;
+    }
+    return true;
   }
 
   // Return true when this disk_state is fully sorted, with all light disks
   // on the left (low indices) and all dark disks on the right (high
   // indices).
   bool is_sorted() const {
-    // TODO: Write code for this function, including rewriting the return
-    // statement, and then delete these comments.
     int alternated=0;
     disk_color current=DISK_LIGHT;
-    for (size_t i = 0; i < _colors.size(); i++) {
+    for(size_t i = 0; i < _colors.size(); i++) {
       if(_colors[i]!=current){
         alternated++;
         if(current==DISK_LIGHT)
@@ -116,7 +119,7 @@ public:
           current=DISK_LIGHT;
       }
     }
-    if (alternated != 1)
+    if(alternated != 1)
       return false;
     return true;
   }
