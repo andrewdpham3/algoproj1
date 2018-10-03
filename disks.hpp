@@ -96,11 +96,10 @@ public:
   bool is_alternating() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.
-    disk_color current=DISK_DARK;
-    for(size_t i = 0; i < _colors.size(); i++) {
+    disk_color current=DISK_LIGHT;
+    for(size_t i = 0; i < _colors.size(); i++)
       if(_colors[i]==current)
         return false;
-    }
     return true;
   }
 
