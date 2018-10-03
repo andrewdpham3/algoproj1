@@ -108,8 +108,13 @@ public:
     int alternated=0;
     disk_color current=DISK_LIGHT;
     for (size_t i = 0; i < _colors.size(); i++) {
-      if(_colors[i]!=current)
+      if(_colors[i]!=current){
         alternated++;
+        if(current=DISK_LIGHT)
+          current=DISK_DARK;
+        else
+          current=DISK_LIGHT;
+      }
     }
     if (alternated != 1)
       return false;
