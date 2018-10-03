@@ -120,7 +120,7 @@ public:
         else
           current=DISK_LIGHT;
       }
-    if(alternated != 1)
+    if(alternated != 1)//if sorted, the colors alternate exactly once
       return false;
     return true;
   }
@@ -167,14 +167,16 @@ sorted_disks sort_left_to_right(const disk_state& before) {
 // Algorithm that sorts disks using the lawnmower algorithm.
 sorted_disks sort_lawnmower(const disk_state& before) {
   int swapcount=0;
-  size_t completed=0;
+  size_t completed=0;//to count number of sorted disks at end
   disk_state after=before;
   while(!after.is_sorted()){
+    //left to right
     for(size_t i = completed; i<after.total_count()-completed-1; i++)
       if(after.get(i)==DISK_DARK && after.get(i+1)==DISK_LIGHT){
         after.swap(i);
         swapcount++;
       }
+    //right to left
     for(size_t i = after.total_count()-completed; i<completed; i--)
       if(after.get(i)==DISK_LIGHT && after.get(i-1)==DISK_DARK){
         after.swap(i-1);
