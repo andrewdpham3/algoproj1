@@ -156,10 +156,10 @@ sorted_disks sort_left_to_right(const disk_state& before) {
   // TODO: Write code for this function, including rewriting the return
   // statement, and then delete these comments.
   int swapcount=0;
-  while(!is_sorted)
-    for(size_t i = 0; i < _colors.size(); i++)
-      if(colors[i]==DISK_DARK && _colors[i+1]==DISK_LIGHT){
-        swap(i);
+  while(!before.is_sorted())
+    for(size_t i = 0; i < before.size(); i++)
+      if(before._colors[i]==DISK_DARK && before._colors[i+1]==DISK_LIGHT){
+        before.swap(i);
         swapcount++;
       }
   return sorted_disks(before, swapcount);
