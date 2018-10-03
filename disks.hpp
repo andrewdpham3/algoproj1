@@ -105,7 +105,15 @@ public:
   bool is_sorted() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.
-    return false;
+    int alternated=0;
+    disk_color current=DISK_LIGHT;
+    for (size_t i = 0; i < _colors.size(); i++) {
+      if(_colors[i]!=current)
+        alternated++;
+    }
+    if (alternated != 1)
+      return false;
+    return true;
   }
 };
 
