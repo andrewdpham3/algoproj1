@@ -101,7 +101,10 @@ public:
       if(_colors[i]==current)
         return false;
       else
-        current==DISK_DARK;
+        if(current==DISK_LIGHT)
+          current=DISK_DARK;
+        else
+          current=DISK_LIGHT;
     return true;
   }
 
