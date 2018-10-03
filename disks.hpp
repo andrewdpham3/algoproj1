@@ -156,13 +156,14 @@ sorted_disks sort_left_to_right(const disk_state& before) {
   // TODO: Write code for this function, including rewriting the return
   // statement, and then delete these comments.
   int swapcount=0;
-  while(!before.is_sorted())
-    for(size_t i = 0; i<before.total_count(); i++)
-      if(before.get(i)==DISK_DARK && before.get(i+1)==DISK_LIGHT){
-        before.swap(i);
+  disk_state after=before;
+  while(!after.is_sorted())
+    for(size_t i = 0; i<after.total_count(); i++)
+      if(after.get(i)==DISK_DARK && after.get(i+1)==DISK_LIGHT){
+        after.swap(i);
         swapcount++;
       }
-  return sorted_disks(before, swapcount);
+  return sorted_disks(after, swapcount);
 }
 
 // Algorithm that sorts disks using the lawnmower algorithm.
