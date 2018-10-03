@@ -94,8 +94,6 @@ public:
   // that the first disk at index 0 is dark, the second disk at index 1
   // is light, and so on for the entire row of disks.
   bool is_alternating() const {
-    // TODO: Write code for this function, including rewriting the return
-    // statement, and then delete these comments.
     disk_color current=DISK_LIGHT;
     for(size_t i = 0; i < _colors.size(); i++)
       if(_colors[i]==current)
@@ -114,7 +112,7 @@ public:
   bool is_sorted() const {
     int alternated=0;
     disk_color current=DISK_LIGHT;
-    for(size_t i = 0; i < _colors.size(); i++) {
+    for(size_t i = 0; i < _colors.size(); i++)
       if(_colors[i]!=current){
         alternated++;
         if(current==DISK_LIGHT)
@@ -122,7 +120,6 @@ public:
         else
           current=DISK_LIGHT;
       }
-    }
     if(alternated != 1)
       return false;
     return true;
