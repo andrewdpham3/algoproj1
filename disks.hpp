@@ -153,8 +153,6 @@ public:
 
 // Algorithm that sorts disks using the left-to-right algorithm.
 sorted_disks sort_left_to_right(const disk_state& before) {
-  // TODO: Write code for this function, including rewriting the return
-  // statement, and then delete these comments.
   int swapcount=0;
   disk_state after=before;
   while(!after.is_sorted())
@@ -170,5 +168,21 @@ sorted_disks sort_left_to_right(const disk_state& before) {
 sorted_disks sort_lawnmower(const disk_state& before) {
   // TODO: Write code for this function, including rewriting the return
   // statement, and then delete these comments.
-  return sorted_disks(before, 0);
+  int swapcount=0;
+  size_t completed=0;
+  disk_state after=before;
+  while(!after.is_sorted()){
+    for(size_t i = completed; i<after.total_count()-completed-1; i++)
+      if(after.get(i)==DISK_DARK && after.get(i+1)==DISK_LIGHT){
+        after.swap(i);
+        swapcount++;
+      }
+    for(size_t i = after.total_count-completed; i<completed; i--)
+      if(after.get(i)==DISK_LIGHT && after.get(i-1)==DISK_DARK){
+        after.swap(i-1);
+        swapcount++;
+      }
+    completed++;
+  }
+  return sorted_disks(after, swapcount);
 }
