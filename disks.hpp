@@ -110,7 +110,7 @@ public:
     for (size_t i = 0; i < _colors.size(); i++) {
       if(_colors[i]!=current){
         alternated++;
-        if(current=DISK_LIGHT)
+        if(current==DISK_LIGHT)
           current=DISK_DARK;
         else
           current=DISK_LIGHT;
